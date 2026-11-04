@@ -171,18 +171,28 @@ function handleFileUpload(array $fileArray, string $targetDir): ?array
     $origName = basename($fileArray['name']);
     $ext = $allowedMimes[$realMime];
 
-    // Ensure uploads directory exists
-    if (!is_dir($targetDir)) {
-        mkdir($targetDir, 0755, true);
+    // Resolve both public/uploads (for web serving) and root uploads (for archive)
+    $projectRoot = dirname(__DIR__, 2);
+    $rootUploadDir = $projectRoot . DIRECTORY_SEPARATOR . 'uploads';
+    $publicUploadDir = $projectRoot . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'uploads';
+
+    if (!is_dir($rootUploadDir)) {
+        mkdir($rootUploadDir, 0755, true);
+    }
+    if (!is_dir($publicUploadDir)) {
+        mkdir($publicUploadDir, 0755, true);
     }
 
     // Generate random unguessable filename
     $uniqueName = 'hazard_' . bin2hex(random_bytes(8)) . '_' . time() . '.' . $ext;
-    $destination = rtrim($targetDir, '/\\') . DIRECTORY_SEPARATOR . $uniqueName;
+    $publicDest = $publicUploadDir . DIRECTORY_SEPARATOR . $uniqueName;
+    $rootDest = $rootUploadDir . DIRECTORY_SEPARATOR . $uniqueName;
 
-    if (!move_uploaded_file($fileArray['tmp_name'], $destination)) {
+    if (!move_uploaded_file($fileArray['tmp_name'], $publicDest)) {
         throw new Exception("Failed to move uploaded file to destination storage.");
     }
+    // Also archive a copy in the root uploads folder
+    copy($publicDest, $rootDest);
 
     return [
         'file_name'        => $origName,

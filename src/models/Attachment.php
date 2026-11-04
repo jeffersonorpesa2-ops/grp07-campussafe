@@ -39,6 +39,21 @@ class Attachment
         return $stmt->fetchAll();
     }
 
+    public static function findById(int $attachmentId): ?array
+    {
+        $pdo = Database::getConnection();
+        $stmt = $pdo->prepare("
+            SELECT a.*, u.full_name AS uploaded_by_name
+            FROM attachment a
+            JOIN app_user u ON a.uploaded_by_user_id = u.user_id
+            WHERE a.attachment_id = :id
+            LIMIT 1
+        ");
+        $stmt->execute([':id' => $attachmentId]);
+        $row = $stmt->fetch();
+        return $row ?: null;
+    }
+
     public static function delete(int $attachmentId): bool
     {
         $pdo = Database::getConnection();

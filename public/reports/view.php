@@ -129,18 +129,48 @@ require_once __DIR__ . '/../../src/helpers/header.php';
 
         <!-- Attachments Section -->
         <?php if (!empty($attachments)): ?>
-            <div style="margin-top: 1.5rem;">
-                <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem;">Attached Evidence / Files</h3>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <?php foreach ($attachments as $att): ?>
-                        <div style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.75rem; background: #fff; max-width: 280px;">
-                            <?php if (str_starts_with($att['mime_type'] ?? '', 'image/')): ?>
-                                <img src="/<?= e($att['file_path_or_url']) ?>" alt="Evidence" style="width: 100%; height: 140px; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem;" onerror="this.style.display='none'">
-                            <?php else: ?>
-                                <div style="height: 80px; display: flex; align-items: center; justify-content: center; background: #f1f5f9; border-radius: 4px; margin-bottom: 0.5rem; font-size: 2rem;">📄</div>
-                            <?php endif; ?>
-                            <p style="font-size: 0.85rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><?= e($att['file_name']) ?></p>
-                            <small style="color: #64748b;">Uploaded by <?= e($att['uploaded_by_name']) ?></small>
+            <div style="margin-top: 2rem;">
+                <h3 style="font-size: 1.15rem; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <span>📷</span> Attached Evidence &amp; Photos (<?= count($attachments) ?>)
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 320px)); gap: 1.25rem;">
+                    <?php foreach ($attachments as $att): 
+                        $isImage = str_starts_with($att['mime_type'] ?? '', 'image/') || preg_match('/\.(jpg|jpeg|png|webp|gif)$/i', $att['file_name']);
+                        $viewUrl = "/attachment.php?id=" . (int)$att['attachment_id'];
+                        $downloadUrl = "/attachment.php?id=" . (int)$att['attachment_id'] . "&download=1";
+                    ?>
+                        <div class="card" style="margin-bottom: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.06); transition: transform 0.15s ease, box-shadow 0.15s ease; overflow: hidden; border: 1px solid #cbd5e1;">
+                            <a href="<?= $viewUrl ?>" target="_blank" title="Click to open full-size image" style="display: block; position: relative; background: #0f172a; text-decoration: none;">
+                                <?php if ($isImage): ?>
+                                    <img src="<?= $viewUrl ?>" alt="<?= e($att['file_name']) ?>" 
+                                         style="width: 100%; height: 175px; object-fit: cover; display: block; border-bottom: 1px solid #e2e8f0;">
+                                    <div style="position: absolute; bottom: 8px; right: 8px; background: rgba(15, 23, 42, 0.75); color: #fff; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.72rem; font-weight: 600; display: flex; align-items: center; gap: 0.3rem;">
+                                        🔍 Click to Enlarge
+                                    </div>
+                                <?php else: ?>
+                                    <div style="height: 175px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f8fafc; border-bottom: 1px solid #e2e8f0; color: #475569;">
+                                        <span style="font-size: 3rem; margin-bottom: 0.3rem;">📄</span>
+                                        <span style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; background: #e2e8f0; padding: 0.15rem 0.5rem; border-radius: 4px;">PDF DOCUMENT</span>
+                                    </div>
+                                <?php endif; ?>
+                            </a>
+
+                            <div style="padding: 0.85rem;">
+                                <p style="font-size: 0.88rem; font-weight: 600; color: #1e293b; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-bottom: 0.25rem;" title="<?= e($att['file_name']) ?>">
+                                    <?= e($att['file_name']) ?>
+                                </p>
+                                <p style="font-size: 0.78rem; color: #64748b; margin-bottom: 0.75rem;">
+                                    Uploaded by <strong><?= e($att['uploaded_by_name']) ?></strong> &bull; <?= formatDate($att['uploaded_at'], 'M d, Y') ?>
+                                </p>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <a href="<?= $viewUrl ?>" target="_blank" class="btn btn-outline btn-sm" style="flex: 1; font-size: 0.8rem; padding: 0.35rem 0.5rem;">
+                                        🔍 View Photo
+                                    </a>
+                                    <a href="<?= $downloadUrl ?>" class="btn btn-secondary btn-sm" style="font-size: 0.8rem; padding: 0.35rem 0.6rem;" title="Download file">
+                                        ⬇️ Download
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 </div>

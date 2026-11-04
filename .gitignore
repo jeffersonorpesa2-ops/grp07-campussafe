@@ -6,6 +6,8 @@
 # File uploads (keep folder, ignore user uploads)
 uploads/*
 !uploads/.gitkeep
+public/uploads/*
+!public/uploads/.gitkeep
 
 # Database dumps and backups (Activity 6)
 *.dump
