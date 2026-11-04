@@ -4,6 +4,12 @@
 -- Database Name: grp07_campussafedb
 -- =============================================================================
 
+-- =============================================================================
+-- ⚠️ WARNING: RUNNING THIS SCRIPT WILL DROP AND RECREATE ALL TABLES!
+-- ALL EXISTING DATA AND TESTING RECORDS WILL BE PERMANENTLY ERASED.
+-- Only execute this for initial installation or an intentional schema reset.
+-- =============================================================================
+
 -- Drop tables if re-running (in reverse dependency order)
 DROP TABLE IF EXISTS attachment CASCADE;
 DROP TABLE IF EXISTS maintenance_action CASCADE;

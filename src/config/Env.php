@@ -41,6 +41,12 @@ class Env
                 if ((str_starts_with($val, '"') && str_ends_with($val, '"')) ||
                     (str_starts_with($val, "'") && str_ends_with($val, "'"))) {
                     $val = substr($val, 1, -1);
+                } else {
+                    // Strip unquoted inline comments (e.g. "5432 # comment" -> "5432")
+                    if (str_contains($val, '#')) {
+                        $commentPos = strpos($val, '#');
+                        $val = trim(substr($val, 0, $commentPos));
+                    }
                 }
 
                 self::$variables[$key] = $val;

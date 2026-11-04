@@ -484,13 +484,15 @@ class Report
             WHERE report_id = :id AND reporter_user_id = :user_id AND status = 'Submitted'
         ");
 
-        return $stmt->execute([
+        $stmt->execute([
             ':location_id' => $data['location_id'],
             ':category_id' => $data['category_id'],
             ':description' => trim($data['description']),
             ':id'          => $reportId,
             ':user_id'     => $userId
         ]);
+
+        return $stmt->rowCount() > 0;
     }
 
     /**

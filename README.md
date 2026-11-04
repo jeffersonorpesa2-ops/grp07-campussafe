@@ -50,10 +50,13 @@ cp .env.example .env
 Edit `.env` to match your local PostgreSQL configuration:
 ```env
 DB_HOST=localhost
-DB_PORT=5432        # Use 5433 if your PostgreSQL 14 instance runs on port 5433
+# Use port 5433 if your PostgreSQL instance runs on 5433; otherwise 5432
+DB_PORT=5432
 DB_NAME=grp07_campussafedb
-DB_USER=postgres    # Or campussafe_app once Activity 4 roles are created
-DB_PASSWORD=postgres
+# Primary runtime account (Activity 4 least-privilege role)
+DB_USER=campussafe_app
+DB_PASSWORD=change_me_locally
+# (Note: For initial script execution in Step 4, connect as the 'postgres' superuser).
 ```
 
 ### Step 2: Enable `pdo_pgsql` Extension in PHP
@@ -76,6 +79,8 @@ CREATE DATABASE grp07_campussafedb;
 ### Step 4: Run the Database Scripts in Order
 Execute the three database scripts while connected to `grp07_campussafedb`:
 
+> **⚠️ WARNING:** `01_schema.sql` drops existing tables and `02_seed.sql` truncates all rows. Only re-run these if you intend to perform a complete database wipe/reset!
+
 ```bash
 # 1. Create tables, constraints, and indexes
 psql -U postgres -h localhost -p 5432 -d grp07_campussafedb -f database/01_schema.sql
@@ -86,6 +91,15 @@ psql -U postgres -h localhost -p 5432 -d grp07_campussafedb -f database/02_seed.
 # 3. Configure Activity 4 least-privilege roles and permissions
 psql -U postgres -h localhost -p 5432 -d grp07_campussafedb -f database/03_roles_and_privileges.sql
 ```
+
+#### Step 4b: Set Your Local Role Passwords
+After running `03_roles_and_privileges.sql`, set secure local passwords for the newly created login accounts:
+```sql
+ALTER ROLE campussafe_app WITH PASSWORD 'your_secure_password';
+ALTER ROLE campussafe_report WITH PASSWORD 'your_secure_password';
+ALTER ROLE campussafe_backup WITH PASSWORD 'your_secure_password';
+```
+Then update `DB_PASSWORD=your_secure_password` in your `.env` file.
 
 *(Optional: You can also run `php database/seed_users.php` to dynamically generate user password hashes based on `DEMO_PASSWORD` in your `.env` file).*
 

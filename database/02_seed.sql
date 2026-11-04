@@ -8,6 +8,12 @@
 -- Bcrypt Hash: $2y$10$nGRztYb8oyzGy3ZHsGOkgO6Wv21nFcYJ8764U8YfFZL.CN0iCgW2C
 -- =============================================================================
 
+-- =============================================================================
+-- ⚠️ WARNING: THIS SCRIPT TRUNCATES AND OVERWRITES ALL TABLES!
+-- ALL EXISTING TESTING DATA WILL BE REPLACED WITH DEFAULT DEMO RECORDS.
+-- Do not run on a production system or after logging custom evaluation tests.
+-- =============================================================================
+
 -- Clean up any existing data in tables
 TRUNCATE TABLE attachment, maintenance_action, report_status_history,
                assignment, hazard_report, campus_location,

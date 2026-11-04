@@ -49,14 +49,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Please provide a descriptive explanation (at least 10 characters).';
     } else {
         try {
-            Report::updatePending($reportId, Auth::id(), [
+            $updated = Report::updatePending($reportId, Auth::id(), [
                 'category_id' => $categoryId,
                 'location_id' => $locationId,
                 'description' => $description
             ]);
 
-            flash('success', "Report #{$reportId} was successfully updated.");
-            redirect("/reports/view.php?id={$reportId}");
+            if ($updated) {
+                flash('success', "Report #{$reportId} was successfully updated.");
+                redirect("/reports/view.php?id={$reportId}");
+            } else {
+                $error = 'Report could not be updated. It may have already been verified or changed status by an administrator.';
+            }
         } catch (Exception $e) {
             $error = 'Update failed: ' . $e->getMessage();
         }

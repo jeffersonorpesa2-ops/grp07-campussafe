@@ -51,8 +51,18 @@ GRANT CONNECT ON DATABASE grp07_campussafedb TO app_runtime_grp, app_readonly_gr
 GRANT USAGE ON SCHEMA public TO app_runtime_grp, app_readonly_grp, app_backup_grp;
 
 -- 6. Application Runtime Permissions (Least-Privilege Principle)
--- Runtime requires SELECT, INSERT, UPDATE across operational tables
-GRANT SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA public TO app_runtime_grp;
+-- Runtime requires SELECT on all tables
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO app_runtime_grp;
+
+-- Runtime requires INSERT on operational entities
+GRANT INSERT ON hazard_report, attachment, assignment, report_status_history,
+                maintenance_action, app_user, hazard_category, campus_location
+    TO app_runtime_grp;
+
+-- Granular UPDATE: Granted ONLY to mutable entities.
+-- Strictly excludes immutable audit history (report_status_history) and technician action logs (maintenance_action)
+GRANT UPDATE ON hazard_report, assignment, app_user, hazard_category, campus_location
+    TO app_runtime_grp;
 
 -- Narrow DELETE: Never allow deleting users or hazard reports directly (deactivation / audit preservation)
 -- Only attachments and assignment records may be unlinked
