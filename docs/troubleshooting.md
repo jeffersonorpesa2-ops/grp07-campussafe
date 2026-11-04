@@ -2,6 +2,8 @@
 
 This guide provides tested solutions to the most common configuration and runtime errors encountered when deploying CampusSafe.
 
+> **💡 Fast Fix for Classmates:** You can bypass manual configuration entirely by double-clicking **`setup.bat`** or opening **`http://localhost:8000/install.php`** which automatically verifies PHP drivers, creates the database, and populates all demo tables with sample data.
+
 ---
 
 ## 1. PHP Extension: `pdo_pgsql` Driver Not Found

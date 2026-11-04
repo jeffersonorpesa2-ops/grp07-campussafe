@@ -8,6 +8,11 @@ require_once __DIR__ . '/../src/auth/Auth.php';
 require_once __DIR__ . '/../src/models/Report.php';
 require_once __DIR__ . '/../src/helpers/functions.php';
 
+if (!Database::isInitialized()) {
+    header('Location: /install.php');
+    exit;
+}
+
 $pageTitle = 'Home';
 $stats = Report::getStatistics();
 $recentReports = Report::getAll([], 6);

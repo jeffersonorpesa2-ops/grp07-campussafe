@@ -8,6 +8,11 @@ require_once __DIR__ . '/../src/auth/Auth.php';
 require_once __DIR__ . '/../src/auth/Csrf.php';
 require_once __DIR__ . '/../src/helpers/functions.php';
 
+if (!Database::isInitialized()) {
+    header('Location: /install.php');
+    exit;
+}
+
 Auth::startSession();
 
 // If already logged in, redirect to dashboard

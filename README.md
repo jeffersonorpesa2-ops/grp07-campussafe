@@ -36,9 +36,28 @@ CampusSafe implements all 10 core functional modules specified in the approved d
 
 ---
 
-## 3. Quickstart Installation Guide
+## 3. Installation Guide
 
-Follow these step-by-step instructions to set up and run CampusSafe on a clean machine:
+### ⚡ Easy 1-Click Setup for Classmates (Recommended!)
+
+No manual database creation, no terminal commands, and no manual `.env` editing required! Choose either method below:
+
+#### Option A: Web Setup Wizard (Browser-Based)
+1. **Double-click `start.bat`** in the project folder.
+2. Your browser will automatically open to the **CampusSafe 1-Click Setup Wizard** (`http://localhost:8000/install.php`).
+3. Check your PostgreSQL settings (defaults to `localhost:5432`, user `postgres`), type your password (default `postgres`), and click **"🚀 Run 1-Click Installation & Seed Database"**.
+4. The wizard will automatically create the database, run all 3 SQL scripts, generate sample hazard photos, write `.env`, and provide a direct button to launch the portal!
+
+#### Option B: Automated Batch Setup (Double-Click Script)
+1. **Double-click `setup.bat`** in the project folder.
+2. It automatically locates your PHP executable, verifies PostgreSQL extensions, connects to PostgreSQL, creates the database, and loads all schema and seed records.
+3. When prompted, press Enter to immediately launch the local server (`start.bat`).
+
+---
+
+### 🛠️ Manual Installation Guide (For Advanced Users / Mac / Linux)
+
+If you prefer to configure and run everything manually step-by-step:
 
 ### Step 1: Configure Environment Variables
 Copy `.env.example` to `.env`:

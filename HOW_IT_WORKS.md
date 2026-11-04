@@ -49,7 +49,9 @@ CampusSafe is built upon a hardened **MVC-Lite (Model-View-Controller)** archite
 │ PUBLIC WEB ROOT (`public/`)                                                            │
 │                                                                                        │
 │   ├── index.php             (Portal Dashboard & Landing Page)                          │
+│   ├── install.php           (1-Click Web Installer & Auto-Configuration Wizard)        │
 │   ├── login.php / logout.php(User Authentication & Fast Demo Switcher)                 │
+│   ├── attachment.php        (Protected Evidence Viewer & Proxy Streamer)               │
 │   ├── reports/              (new.php, list.php, view.php, edit.php)                    │
 │   ├── admin/                (verify.php, assign.php, users.php, master data, stats)    │
 │   ├── maintenance/          (index.php, assigned.php, update.php)                      │
