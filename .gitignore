@@ -1,0 +1,33 @@
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+
+# File uploads (keep folder, ignore user uploads)
+uploads/*
+!uploads/.gitkeep
+
+# Database dumps and backups (Activity 6)
+*.dump
+*.sql.gz
+*.tar
+*.bak
+db-backup-recovery/*.dump
+
+# Logs and runtime files
+*.log
+error_log
+
+# Composer & dependencies
+vendor/
+
+# Operating System files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

@@ -188,6 +188,7 @@ body {
 }
 
 .nav-dropdown:hover .dropdown-menu,
+.nav-dropdown.open .dropdown-menu,
 .nav-dropdown:focus-within .dropdown-menu {
     display: flex;
 }

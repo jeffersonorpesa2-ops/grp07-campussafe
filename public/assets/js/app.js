@@ -68,9 +68,19 @@ document.addEventListener('DOMContentLoaded', () => {
     alertCloseButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             const alertBox = btn.closest('.alert');
-            if (alertBox) {
-                alertBox.style.display = 'none';
+    // 5. Dropdown click support for navbar
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const parent = toggle.closest('.nav-dropdown');
+            if (parent) {
+                parent.classList.toggle('open');
             }
         });
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.nav-dropdown.open').forEach(dd => dd.classList.remove('open'));
     });
 });
