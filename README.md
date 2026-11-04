@@ -133,6 +133,8 @@ All seed accounts share the standard demonstration password: **`Password123!`**
 │   ├── user-roles.md           # Application roles -> Database roles mapping
 │   ├── database.md             # Full Data Dictionary and constraint specs
 │   ├── db-user-role-setup.md   # Activity 4 setup & test matrix
+│   ├── testing-guide.md        # Comprehensive testing matrix & QA guide
+│   ├── master-data-crud.md     # Master Data CRUD documentation & rationale
 │   ├── troubleshooting.md      # Common errors and verified fixes
 │   ├── erd.md                  # Entity-Relationship diagram in Mermaid & ASCII
 │   └── architecture.md         # Layered MVC-lite system architecture
@@ -169,8 +171,10 @@ All seed accounts share the standard demonstration password: **`Password123!`**
 ## 7. Additional Documentation Links
 
 - [How Does It Work? Detailed Deep-Dive](HOW_IT_WORKS.md)
+- [Comprehensive Testing & QA Guide](docs/testing-guide.md)
 - [Application Roles & Database Privileges](docs/user-roles.md)
 - [Database Schema & Data Dictionary](docs/database.md)
+- [Master Data CRUD Documentation](docs/master-data-crud.md)
 - [Activity 4 Setup Instructions](docs/db-user-role-setup.md)
 - [Troubleshooting & FAQ](docs/troubleshooting.md)
 - [Entity-Relationship Diagram (ERD)](docs/erd.md)
