@@ -13,7 +13,7 @@
 | **Evaluating Group Repository** | [https://github.com/jeffersonorpesa2-ops/grp07-campussafe](https://github.com/jeffersonorpesa2-ops/grp07-campussafe) |
 | **Target Project Monitored**    | **Park-It: Parking Management System**                                                                               |
 | **Target Project Group**        | **Group 2** (De Vera Miller P., Butanas John David, Macascas Mark Andrew, Pelia Jhon Francis, Lumbo Marianne)        |
-| **Target Project Repository**   | [https://github.com/millerdevera6-glitch/park-it-database](https://github.com/millerdevera6-glitch/park-it-database) |
+| **Target Project Repository**   | [https://github.com/HelloP0/PARK-IT-DATABASE-MANAGEMENT-SYSTEM](https://github.com/HelloP0/PARK-IT-DATABASE-MANAGEMENT-SYSTEM) |
 | **Primary Database**            | `grp_parkitdb` (PostgreSQL 18.6 on x86_64 Windows, compiled by MSVC)                                                 |
 | **Restored Test Database**      | `grp_parkitdb_restore_test`                                                                                          |
 
@@ -1060,7 +1060,7 @@ Below are the exact values to record in the class Google Sheets tracker:
 | Column Header                  | Value                                                                                                   |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------- |
 | **Project**                    | Group 2 - Park-It: Parking Management System                                                            |
-| **Repository cloned**          | `https://github.com/millerdevera6-glitch/park-it-database`, Branch: `main`                              |
+| **Repository cloned**          | `https://github.com/HelloP0/PARK-IT-DATABASE-MANAGEMENT-SYSTEM`, Branch: `main`                              |
 | **Database setup result**      | Success (Verified PostgreSQL 18.6 on port 5432, executed schema DDL and seed data, 5 tables loaded).    |
 | **Access-control folder link** | `https://github.com/jeffersonorpesa2-ops/grp07-campussafe/tree/main/db-access-control/group-02-parkit/` |
 | **Access-control status**      | Completed                                                                                               |

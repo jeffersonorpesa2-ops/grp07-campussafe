@@ -25,9 +25,9 @@ Group 7 cloned, initialized, and assessed the Activity 3 applications of all oth
 
 | Target Group | Project Name | Repository URL | Database Objects Identified | Setup Result |
 |---|---|---|---|---|
-| **Group 4** | BrewPOS (Point of Sale) | [BrewPOS Repo](https://github.com/brewpos/brewpos) | 8 tables (`orders`, `order_items`, `products`, `users`, `shifts`, etc.) | Success |
-| **Group 2** | Park-It (Parking Lot System) | [Park-It Repo](https://github.com/parkit/park-it-database) | 7 tables (`parking_records`, `parking_spaces`, `rates`, `users`, etc.) | Success |
-| **Group 3** | Project OJT RMA (Internship System) | [OJT RMA Repo](https://github.com/ojt-rma/Project-OJT-RMA-System) | 9 tables (`users`, `students`, `supervisors`, `evaluations`, etc.) | Success |
+| **Group 4** | BrewPOS (Point of Sale) | [BrewPOS Repo](https://github.com/Nycri/brewpos) | 8 tables (`orders`, `order_items`, `products`, `users`, `shifts`, etc.) | Success |
+| **Group 2** | Park-It (Parking Lot System) | [Park-It Repo](https://github.com/HelloP0/PARK-IT-DATABASE-MANAGEMENT-SYSTEM) | 7 tables (`parking_records`, `parking_spaces`, `rates`, `users`, etc.) | Success |
+| **Group 3** | Project OJT RMA (Internship System) | [OJT RMA Repo](https://github.com/swvenz/Project-OJT-RMA-System.git) | 9 tables (`users`, `students`, `supervisors`, `evaluations`, etc.) | Success |
 | **Group 5** | Lost & Found System | [grp05_lostandfound](https://github.com/grp05-dba/grp05_lostandfound) | 7 tables (`items`, `claims`, `categories`, `audit_logs`, etc.) | Success |
 | **Group 6** | HabalGo (Ride-Hailing) | [HabalGo Repo](https://github.com/jeanaroyo/HabalGo) | 8 tables (`bookings`, `drivers`, `passengers`, `payments`, etc.) | Success |
 | **Group 8** | bwisIT Campus Canteen Pre-Order | [Canteen Repo](https://github.com/EclipseChan/bwisIT-Solutions---Campus-Canteen-Pre-Order-and-Queue-Management-System) | 8 tables (`orders`, `order_items`, `menu_items`, `stalls`, `users`, etc.) | Success |
